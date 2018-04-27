@@ -31,39 +31,61 @@ int main() {
 
   int sem;
 
+<<<<<<< HEAD
   /* creacion del semaforo controlador de procesos,
    * solo se aceptaran 4 procesos a la vez en el monitor
    */
+=======
+  /*
+     Creacion del semaforo controlador de procesos
+     Nota: solo se aceptaran 4 procesos a la vez en el monitor
+  */
+
+>>>>>>> sincronizacion
   if ((sem  = semget(SEM_ID, 1, IPC_CREAT | 0644)) < 0) {
     perror("\tsemget");
     return(-1);
   }
 
+<<<<<<< HEAD
   /** inicializacion del semaforo **/
   semctl(sem, 0, SETVAL, 4);
 
   /** creacion del segmento de memoria compartida **/
+=======
+  /* Inicializacion del semaforo */
+  semctl(sem, 0, SETVAL, 5);
+
+
+  /* Creacion del segmento de memoria compartida */
+>>>>>>> sincronizacion
   if((shmem = shmget(id_shmem, sizeof(shmem_data), IPC_CREAT | 0666)) < 0)
   {
 		perror("\tshmget");
 		exit(EXIT_FAILURE);
   }
 
+<<<<<<< HEAD
   /** vinculacion al segmento **/
+=======
+  /* Vinculacion al segmento */
+>>>>>>> sincronizacion
 	if ((pto_shmem = shmat(shmem, NULL, 0)) == (char *) -1)
 	{
 		perror("\tshmat");
 		exit(EXIT_FAILURE);
 	}
 
+
   /** inicializacion **/
+
   pto_inf = (shmem_data *) pto_shmem;
   shmem_init(pto_inf);
 
   while(1)
   {
     show_mon(pto_inf);
-    usleep(100000);
+    usleep(200000);
   }
 
   return(0);

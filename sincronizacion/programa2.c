@@ -44,14 +44,23 @@ int main()
     exit(EXIT_FAILURE);
   }
 
+<<<<<<< HEAD
   /* busqueda del segmento de memoria compartida */
+=======
+
+  /* Busqueda del segmento de memoria compartida */
+>>>>>>> sincronizacion
   if((shmem = shmget(id_shmem, sizeof(shmem_data), 0666)) < 0)
   {
 		perror("\tshmget");
 		exit(EXIT_FAILURE);
 	}
 
+<<<<<<< HEAD
   /* vinculacion al segmento */
+=======
+  /* Vinculacion al segmento */
+>>>>>>> sincronizacion
 	if((pto_shmem = shmat(shmem, NULL, 0)) == (char *) -1)
 	{
 		perror("\tshmat");
@@ -79,8 +88,10 @@ int main()
   for(i=0; i<repeticion; i++)
   {
     pto_inf->array_p[pos].numero++;
-    printf("\tnumero: %d\n",i);
-    usleep(500000);
+
+    printf("Numero: %d\n",i);
+    usleep(400000);
+
   }
 
   pto_inf->array_p[pos].termino = 1;
